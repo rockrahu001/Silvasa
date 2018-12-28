@@ -1,0 +1,55 @@
+.city-image {
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.hotel-img {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.package-1 {
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+.package-1 label, .package-1 p {
+    margin: 0;
+}
+.package-2 {
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.package-2 h4, .package-2 p {
+    margin: 0;
+}
+.top-wrap {
+    height: 40%;
+}
+.top-user img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+}
+.top-user label{
+    margin: 0;
+    font-size: 14px;
+}
+.top-user p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 10px;
+}
+.top-user {
+    position: relative;
+    float: left;
+    margin-right: 25px;
+}
+.top-user-inner {
+    padding-left: 120px;
+    padding-top: 20px;
+}
