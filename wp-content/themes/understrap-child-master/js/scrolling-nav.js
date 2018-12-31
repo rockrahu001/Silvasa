@@ -17,3 +17,20 @@ jQuery(function() {
         event.preventDefault();
     });
 });
+
+jQuery(document).ready(function (jQuery) {
+    jQuery("#owl-example").owlCarousel();
+});
+
+jQuery("body").data("page", "frontpage");
+
+jQuery("#owl-example").owlCarousel({
+    items: 3,
+})
+
+jQuery(document).ready(function(){
+    jQuery('#main-slider').css('height', jQuery(window).height());
+});
+jQuery(window).resize(function(){
+    jQuery('#main-slider').css('height', jQuery(window).height());
+});

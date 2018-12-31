@@ -40,27 +40,58 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-6 text-center">
-						<img src="images/logo.png" height="150">
+						<?php if ( ! has_custom_logo() ) { ?>
+
+							<?php if ( is_front_page() && is_home() ) : ?>
+
+							<h1 class="navbar-brand mb-0"><a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a></h1>
+
+							<?php else : ?>
+
+								<a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+
+							<?php endif; ?>
+
+
+						<?php } else {
+							the_custom_logo();
+						} ?><!-- end custom logo -->
+
 					</div>
 					<div class="col-sm-6">
-						<div class="col-sm-4">
-							<div class="top-user">
-								<img src="images/img-3.jpg" height="100px" width="100px">
-								<div class="top-user-inner">
-									<label>Rakeshgiri Goswami</label>
-									<p>Manager</p>
-								</div>
-							</div>
-						</div>
+						<?php
+						$args = array('post_type' => 'people', 'orderby' => 'date', 'order' => 'DESC');
+						$query = new WP_Query( $args );
+						if ( $query->have_posts() ):
+							while ( $query->have_posts() ) : $query->the_post(); ?>
+								<div class="col-sm-4">
+									<div class="top-user">
+										<img src="<?php echo get_the_post_thumbnail_url(); ?>" height="100px" width="100px">
+										<div class="top-user-inner">
+											<label><?php echo get_the_title(); ?></label>
+											<p><?php echo get_the_content(); ?></p>
+										</div>
+									</div>
+								</div>			
+							<?php	endwhile;
+						endif;
+						wp_reset_postdata();
+						?>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="owl-carousel" style="height: 60%;">
-			<div class="item" style="background-image: url(images/bg1.jpg);"></div>
-			<!--/.item-->
-			<div class="item" style="background-image: url(images/bg2.jpg);"></div>
-			<!--/.item-->
+			<?php
+			$images = get_field('images');
+			$size = 'full';
+			if( $images ):
+				foreach( $images as $image ):
+					?><div class="item" style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>);"></div><?php
+				endforeach;
+			endif;
+			?>
 		</div>
 		<!--/.owl-carousel-->
 	</section>
