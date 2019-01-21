@@ -62,6 +62,39 @@ add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 function people_handling() {
 
     $labels = array(
+        "name" => __( "Packages", "twentynineteen" ),
+        "singular_name" => __( "Package", "twentynineteen" ),
+    );
+
+    $args = array(
+        "label" => __( "Packages", "twentynineteen" ),
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "publicly_queryable" => true,
+        "show_ui" => true,
+        "delete_with_user" => false,
+        "show_in_rest" => true,
+        "rest_base" => "",
+        "rest_controller_class" => "WP_REST_Posts_Controller",
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "show_in_nav_menus" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array( "slug" => "package", "with_front" => true ),
+        "query_var" => true,
+        "menu_position" => 4,
+        "supports" => array( "title", "editor", "thumbnail" ),
+    );
+
+    register_post_type( "Package", $args );
+
+
+
+    $labels = array(
         "name" => __( "People", "twentynineteen" ),
         "singular_name" => __( "People", "twentynineteen" ),
     );
@@ -86,7 +119,7 @@ function people_handling() {
         "hierarchical" => false,
         "rewrite" => array( "slug" => "people", "with_front" => true ),
         "query_var" => true,
-        "menu_position" => 2,
+        "menu_position" => 7,
         "supports" => array( "title", "editor", "thumbnail" ),
     );
 
@@ -117,7 +150,7 @@ function people_handling() {
         "hierarchical" => false,
         "rewrite" => array( "slug" => "City", "with_front" => true ),
         "query_var" => true,
-        "menu_position" => 2,
+        "menu_position" => 5,
         "supports" => array( "title", "editor", "thumbnail" ),
     );
 
